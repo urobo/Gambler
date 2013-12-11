@@ -44,7 +44,7 @@ var assessPartials = function(element,index,array){
 	if(outcome === true){
 		statistics.wonGames++;
 	}else{
-		statistics.lostGames++
+		statistics.lostGames++;
 	}
 
 };
