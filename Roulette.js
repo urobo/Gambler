@@ -18,5 +18,57 @@ var rouletteGeneratorTest = function(trials){
 	}
 };
 
+var roulette = {
+
+	win :false,
+	bet: 0,
+	capital: 0,
+	rounds: 0,
+	bets: [],
+	results:[],
+
+	setup : function(){
+		this.win = false;
+		this.bet = 0;
+		this.capital = 0;
+		this.rounds = 0;
+		this.bets = [];
+		this.results = [];
+	},
+
+	placebets : function(){
+		this.capital -= this.results.length * this.bet;
+		if (this.capital<0) {
+			return false;
+		}
+		this.bets = this.results;
+		return true;
+	},
+
+    play : function(capital, bet){
+    	this.capital = capital;
+    	this.bet = bet;
+		this.results[this.results.length] = rouletteGenerator();
+		while(1){
+		if (!this.placebets()){
+			this.win = false;
+			return this;
+		}
+		var spin = rouletteGenerator();
+
+		this.rounds++;
+		if (this.bets.indexOf(spin) > -1){
+			this.capital += this.bet * 35;
+			this.win = true;
+			this.results[this.results.length] = spin;
+
+			return this;
+		}
+			this.results[this.results.length] = spin;
+		}
+	},
+};
+
+exports.game = roulette;
 exports.generator = rouletteGenerator;
 exports.generatorTest = rouletteGeneratorTest;
