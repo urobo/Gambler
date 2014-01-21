@@ -65,7 +65,7 @@ var environment = {
 
 		for (var i = 0 ; i < this.maxSimulations ; i++){
 			this.game.setup();
-			this.playedGames[this.playedGames.length] = jquery.extend(true,{},this.game.play(capital,bet));			
+			this.playedGames[this.playedGames.length] = jquery.extend(true,{},this.game.play(capital,bet));
 		}
 	},
 

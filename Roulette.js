@@ -66,7 +66,7 @@ var roulette = {
 		}
 			this.results[this.results.length] = spin;
 		}
-	},
+	}
 };
 
 exports.game = roulette;
